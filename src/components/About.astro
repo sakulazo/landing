@@ -1,0 +1,174 @@
+---
+---
+
+<section id="nosotros" class="section about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <h2 class="section-title">Quiénes Somos</h2>
+        <p class="about-text">
+          En <strong>sakulazo.com</strong> tenemos más de 15 años de experiencia
+          en el sector tecnológico. Nuestra trayectoria combina una sólida base técnica con
+          los flujos de trabajo más modernos del sector.
+        </p>
+        <p class="about-text">
+          Trabajamos de forma 100% remota, lo que nos permite ofrecer servicios de calidad
+          a clientes en cualquier ubicación. Nuestro enfoque se centra en entender las
+          necesidades reales de cada cliente para proporcionar soluciones eficientes y escalables.
+        </p>
+        <div class="about-features">
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            <span>Trato directo y personalizado</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            <span>Soluciones adaptables a cada presupuesto</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            <span>Seguimiento y soporte continuado</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            <span>Compromiso con los plazos</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="visual-card">
+          <div class="visual-number">15+</div>
+          <div class="visual-label">Años de<br/>experiencia</div>
+        </div>
+        <div class="visual-card">
+          <div class="visual-number">100%</div>
+          <div class="visual-label">Trabajo<br/>remoto</div>
+        </div>
+        <div class="visual-card">
+          <div class="visual-number">∞</div>
+          <div class="visual-label">Compromiso<br/>y dedicación</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--bg-secondary);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-text {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-text strong {
+    color: var(--accent-cyan);
+  }
+
+  .about-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .feature-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(6, 182, 212, 0.15);
+    color: var(--accent-cyan);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .about-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .visual-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 1.75rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .visual-card:hover {
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .visual-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    min-width: 80px;
+  }
+
+  .visual-label {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-features {
+      grid-template-columns: 1fr;
+    }
+
+    .about-visual {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .visual-card {
+      flex: 1;
+      min-width: 140px;
+      flex-direction: column;
+      text-align: center;
+      padding: 1.25rem;
+    }
+
+    .visual-number {
+      font-size: 2rem;
+      min-width: auto;
+    }
+  }
+</style>
