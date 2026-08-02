@@ -6,8 +6,13 @@
   <div class="container hero-content">
     <div class="hero-badge">Innovación Tecnológica</div>
     <h1>
-      Transformando ideas en 
-      <span class="gradient-text"> soluciones digitales</span>
+      Transformando ideas en
+      <span class="rotating-text" aria-live="polite">
+        <span class="rotating-word gradient-text active">soluciones digitales</span>
+        <span class="rotating-word gradient-text">aplicaciones reales</span>
+        <span class="rotating-word gradient-text">automatización de procesos</span>
+        <span class="rotating-caret" aria-hidden="true"></span>
+      </span>
     </h1>
     <p class="hero-description">
       Estamos especializados en tecnología que ayuda a empresas y profesionales
@@ -87,6 +92,65 @@
     background-clip: text;
   }
 
+  .rotating-text {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    vertical-align: baseline;
+  }
+
+  .rotating-word {
+    grid-area: 1 / 1;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease,
+      filter 0.6s ease;
+  }
+
+  .rotating-word.active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  .rotating-caret {
+    grid-area: 1 / 1;
+    align-self: center;
+    justify-self: start;
+    margin-left: 100%;
+    width: 3px;
+    height: 0.9em;
+    border-radius: 2px;
+    background: var(--accent-cyan);
+    animation: caret-blink 1s steps(2, start) infinite;
+  }
+
+  @keyframes caret-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rotating-word {
+      transition: none;
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .rotating-word:not(.active) {
+      display: none;
+    }
+  }
+
   .hero-description {
     font-size: 1.2rem;
     color: var(--text-secondary);
@@ -143,3 +207,14 @@
     }
   }
 </style>
+
+<script>
+  const words = document.querySelectorAll('.rotating-word');
+  let index = 0;
+
+  setInterval(() => {
+    words[index].classList.remove('active');
+    index = (index + 1) % words.length;
+    words[index].classList.add('active');
+  }, 2600);
+</script>
