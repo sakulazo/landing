@@ -94,7 +94,7 @@
 
   .rotating-text {
     display: inline-grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     vertical-align: baseline;
   }
 
@@ -198,12 +198,26 @@
       font-size: 2.25rem;
     }
 
+    .rotating-word {
+      white-space: normal;
+    }
+
+    .rotating-caret {
+      display: none;
+    }
+
     .hero-description {
       font-size: 1rem;
     }
 
     .hero-stats {
       gap: 2rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 1.9rem;
     }
   }
 </style>
