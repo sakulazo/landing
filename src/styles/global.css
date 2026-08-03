@@ -14,6 +14,26 @@
   --border-subtle: #1e293b;
   --border-accent: rgba(6, 182, 212, 0.3);
   --shadow-glow: 0 0 30px rgba(6, 182, 212, 0.1);
+  --header-bg: rgba(10, 15, 26, 0.9);
+  --header-bg-glass: rgba(10, 15, 26, 0.85);
+}
+
+html[data-theme='light'] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #e2e8f0;
+  --accent-cyan: #0891b2;
+  --accent-blue: #2563eb;
+  --accent-gradient: linear-gradient(135deg, #0891b2, #2563eb);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  --border-accent: rgba(6, 182, 212, 0.4);
+  --shadow-glow: 0 0 30px rgba(6, 182, 212, 0.15);
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --header-bg-glass: rgba(255, 255, 255, 0.85);
 }
 
 * {
@@ -52,6 +72,7 @@ a:hover {
 
 .section {
   padding: 5rem 0;
+  scroll-margin-top: 71px;
 }
 
 .section-title {

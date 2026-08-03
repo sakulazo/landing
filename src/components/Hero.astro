@@ -8,9 +8,9 @@
     <h1>
       Transformando&nbsp;<span class="hero-title-line-2">
         ideas en&nbsp;<span class="rotating-text" aria-live="polite">
-          <span class="rotating-word gradient-text active">soluciones digitales</span>
-          <span class="rotating-word gradient-text">aplicaciones reales</span>
-          <span class="rotating-word gradient-text">automatización de procesos</span>
+          <span class="rotating-word gradient-text active">soluciones&nbsp;<br class="rotate-br-mobile">digitales</span>
+          <span class="rotating-word gradient-text">aplicaciones&nbsp;<br class="rotate-br-mobile">reales</span>
+          <span class="rotating-word gradient-text">automatización&nbsp;<br class="rotate-br-mobile">de procesos</span>
           <span class="rotating-caret" aria-hidden="true"></span>
         </span>
       </span>
@@ -117,6 +117,10 @@
     filter: blur(0);
   }
 
+  .rotate-br-mobile {
+    display: none;
+  }
+
   .rotating-caret {
     grid-area: 1 / 1;
     align-self: center;
@@ -208,14 +212,16 @@
     }
 
     .rotating-text {
-      display: block;
+      display: grid;
       min-height: 2.3em;
-      align-content: center;
     }
 
     .rotating-word {
       white-space: normal;
-      align-self: center;
+    }
+
+    .rotate-br-mobile {
+      display: inline;
     }
 
     .rotating-caret {
