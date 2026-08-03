@@ -134,7 +134,7 @@
   }
 
   .nav-links {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -160,6 +160,16 @@
 
   .nav-links a:hover {
     color: var(--accent-cyan);
+  }
+
+  @media (min-width: 769px) {
+    .nav-links {
+      pointer-events: none;
+    }
+
+    .nav-links a {
+      pointer-events: auto;
+    }
   }
 
   .menu-toggle {
