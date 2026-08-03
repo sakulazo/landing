@@ -6,12 +6,15 @@
   <div class="container hero-content">
     <div class="hero-badge">Innovación Tecnológica</div>
     <h1>
-      Transformando ideas en
-      <span class="rotating-text" aria-live="polite">
-        <span class="rotating-word gradient-text active">soluciones digitales</span>
-        <span class="rotating-word gradient-text">aplicaciones reales</span>
-        <span class="rotating-word gradient-text">automatización de procesos</span>
-        <span class="rotating-caret" aria-hidden="true"></span>
+      Transformando
+      <span class="hero-title-line-2">
+        ideas en
+        <span class="rotating-text" aria-live="polite">
+          <span class="rotating-word gradient-text active">soluciones digitales</span>
+          <span class="rotating-word gradient-text">aplicaciones reales</span>
+          <span class="rotating-word gradient-text">automatización de procesos</span>
+          <span class="rotating-caret" aria-hidden="true"></span>
+        </span>
       </span>
     </h1>
     <p class="hero-description">
@@ -194,8 +197,16 @@
   }
 
   @media (max-width: 768px) {
+    .hero {
+      padding-top: 120px;
+    }
+
     h1 {
       font-size: 2.25rem;
+    }
+
+    .hero-title-line-2 {
+      display: block;
     }
 
     .rotating-word {
