@@ -4,11 +4,14 @@
 # Uso: make deploy MSG="descripción del cambio"
 
 # ── Variables por proyecto ────────────────────────────────────────────
-SITE_NAME    := landing                  # nombre corto (mensajes)
-SITE_URL     := https://sakulazo.com/    # URL pública
-REMOTE_DIR   := /srv/landing             # raíz servida por Caddy (¡debe empezar por /srv/!)
-REMOTE_OWNER := sakulito                 # propietario real del directorio en /srv
-BUILD_CMD    := npm run build            # comando de build (pnpm build | npm run build)
+# SITE_NAME: nombre corto · SITE_URL: URL pública · REMOTE_DIR: raíz servida por
+# Caddy (¡debe empezar por /srv/!) · REMOTE_OWNER: propietario real en /srv ·
+# BUILD_CMD: comando de build. SIN comentarios inline (los espacios rompen owner:group).
+SITE_NAME    := landing
+SITE_URL     := https://sakulazo.com/
+REMOTE_DIR   := /srv/landing
+REMOTE_OWNER := sakulito
+BUILD_CMD    := npm run build
 
 # ── Infraestructura SSH (común) ───────────────────────────────────────
 SSH_HOST   := sakulito@185.214.134.40
