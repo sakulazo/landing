@@ -1,19 +1,44 @@
 ---
+import { Icon } from 'astro-icon/components';
+import logoRaw from '../../logo-sakulazo.svg?raw';
+
+const logo = logoRaw
+  .replace(/<\?xml[^>]*\?>\s*/i, '')
+  .replace(/<!--[\s\S]*?-->\s*/, '')
+  .replace('fill:#333333', 'fill:var(--logo-text, var(--text-primary))')
+  .replace('fill:#8c8c8c', 'fill:var(--logo-emblem, var(--text-secondary))')
+  .replace('fill:#666666', 'fill:var(--logo-tagline, var(--text-muted))')
+  .replace('<svg', '<svg class="logo-svg" aria-hidden="true" focusable="false"');
 ---
 
 <header class="header">
-  <nav class="nav container">
-    <a href="#" class="logo" style="color: var(--text-primary);">sakulazo.com</a>
+  <nav class="nav">
+    <a href="#" class="logo" aria-label="sakulazo.com">
+      <Fragment set:html={logo} />
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#servicios"><Icon name="lucide:settings" class="nav-icon" aria-hidden="true" />Servicios</a></li>
+      <li><a href="#nosotros"><Icon name="lucide:users" class="nav-icon" aria-hidden="true" />Nosotros</a></li>
+      <li><a href="#tecnologias"><Icon name="lucide:code" class="nav-icon" aria-hidden="true" />Tecnologías</a></li>
+      <li><a href="#contacto"><Icon name="lucide:message-square" class="nav-icon" aria-hidden="true" />Contacto</a></li>
+      <li class="nav-theme">
+        <label class="theme-switch" title="Cambiar tema">
+          <input type="checkbox" class="theme-switch-input" aria-label="Activar modo claro" />
+          <Icon name="lucide:sun" class="theme-switch-icon theme-switch-sun" aria-hidden="true" />
+          <Icon name="lucide:moon" class="theme-switch-icon theme-switch-moon" aria-hidden="true" />
+          <span class="theme-switch-thumb" aria-hidden="true"></span>
+        </label>
+      </li>
+    </ul>
+
     <div class="nav-actions">
-      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
-        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="4"></circle>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
+      <label class="theme-switch" title="Cambiar tema">
+        <input type="checkbox" class="theme-switch-input" aria-label="Activar modo claro" />
+        <Icon name="lucide:sun" class="theme-switch-icon theme-switch-sun" aria-hidden="true" />
+        <Icon name="lucide:moon" class="theme-switch-icon theme-switch-moon" aria-hidden="true" />
+        <span class="theme-switch-thumb" aria-hidden="true"></span>
+      </label>
       <button class="menu-toggle" aria-label="Menú" id="menu-toggle">
         <span></span>
         <span></span>
@@ -23,17 +48,9 @@
   </nav>
 </header>
 
-<ul class="nav-links">
-  <li><a href="#servicios"><svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>Servicios</a></li>
-  <li><a href="#nosotros"><svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Nosotros</a></li>
-  <li><a href="#tecnologias"><svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Tecnologías</a></li>
-  <li><a href="#contacto"><svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Contacto</a></li>
-</ul>
-
 <script>
   const toggle = document.getElementById('menu-toggle');
   const navLinks = document.querySelector('.nav-links');
-  const themeToggle = document.getElementById('theme-toggle');
 
   toggle?.addEventListener('click', () => {
     navLinks?.classList.toggle('active');
@@ -47,12 +64,21 @@
     });
   });
 
-  themeToggle?.addEventListener('click', () => {
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const next = isLight ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'light' ? '#f8fafc' : '#0a0f1a');
+  function applyTheme(theme) {
+    const isLight = theme === 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isLight ? '#f8fafc' : '#0a0f1a');
+    document.querySelectorAll('.theme-switch-input').forEach(input => {
+      input.checked = isLight;
+      input.setAttribute('aria-label', isLight ? 'Activar modo oscuro' : 'Activar modo claro');
+    });
+  }
+
+  document.querySelectorAll('.theme-switch-input').forEach(input => {
+    input.checked = document.documentElement.getAttribute('data-theme') === 'light';
+    input.setAttribute('aria-label', input.checked ? 'Activar modo oscuro' : 'Activar modo claro');
+    input.addEventListener('change', () => applyTheme(input.checked ? 'light' : 'dark'));
   });
 
   let resizeTimer;
@@ -85,91 +111,134 @@
   .nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 70px;
-  }
-
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    color: var(--text-primary);
-    transition: color 0.3s ease;
-  }
-
-  .theme-toggle:hover {
-    color: var(--accent-cyan);
-  }
-
-  .icon-sun {
-    display: block;
-  }
-
-  .icon-moon {
-    display: none;
-  }
-
-  html[data-theme='light'] .icon-sun {
-    display: none;
-  }
-
-  html[data-theme='light'] .icon-moon {
-    display: block;
+    height: var(--header-height);
+    padding: 0 clamp(1rem, 2vw, 1.5rem);
+    gap: clamp(1rem, 3vw, 2rem);
   }
 
   .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
     color: var(--text-primary);
   }
 
+  :global(.logo-svg) {
+    display: block;
+    height: var(--logo-size);
+    width: auto;
+  }
+
   .nav-links {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
+    flex: 1 1 auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: clamp(1rem, 4vw, 4rem);
     list-style: none;
-    gap: 2rem;
-    z-index: 101;
+    white-space: nowrap;
   }
 
   .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
     color: var(--text-secondary);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: clamp(1rem, calc(1rem + (100vw - 768px) * 0.001851852), 1.8rem);
     transition: color 0.3s ease;
   }
 
   .nav-icon {
-    display: none;
+    display: block;
+    flex-shrink: 0;
+    width: 1.1em;
+    height: 1.1em;
   }
 
   .nav-links a:hover {
     color: var(--accent-cyan);
   }
 
-  @media (min-width: 769px) {
-    .nav-links {
-      pointer-events: none;
-    }
+  .nav-actions {
+    flex: 0 0 auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
-    .nav-links a {
-      pointer-events: auto;
-    }
+  .nav-theme {
+    display: none;
+  }
+
+  .theme-switch {
+    position: relative;
+    display: inline-flex;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .theme-switch:hover {
+    border-color: var(--border-accent);
+  }
+
+  .theme-switch:focus-within {
+    border-color: var(--border-accent);
+    box-shadow: 0 0 0 2px var(--border-accent);
+  }
+
+  .theme-switch-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .theme-switch-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: var(--accent-gradient);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 0;
+  }
+
+  .theme-switch-icon {
+    position: relative;
+    z-index: 1;
+    width: 26px;
+    height: 26px;
+    padding: 5px;
+    box-sizing: border-box;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+  }
+
+  .theme-switch-moon {
+    color: #ffffff;
+  }
+
+  :global(html[data-theme='light']) .theme-switch-thumb {
+    transform: translateX(0);
+  }
+
+  :global(html[data-theme='light']) .theme-switch-moon {
+    color: var(--text-muted);
+  }
+
+  :global(html[data-theme='light']) .theme-switch-sun {
+    color: #ffffff;
   }
 
   .menu-toggle {
@@ -206,9 +275,22 @@
       display: flex;
     }
 
+    .nav-actions .theme-switch {
+      display: none;
+    }
+
+    .nav-theme {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
     .nav-links {
       position: fixed;
-      top: 70px;
+      top: var(--header-height);
       left: 15%;
       right: 15%;
       height: auto;
@@ -227,13 +309,13 @@
       opacity: 0;
       pointer-events: none;
       transition: all 0.3s ease;
+      white-space: normal;
     }
 
     .nav-links a {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-size: 1.05rem;
       width: 100%;
       justify-content: center;
       padding: 0.75rem 1.5rem;

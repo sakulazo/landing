@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
+  --logo-size: clamp(53.76px, calc(53.76px + (100vw - 768px) * 0.0755556), 86.4px);
+  --header-height: calc(var(--logo-size) + 12px);
   --bg-primary: #0a0f1a;
   --bg-secondary: #111827;
   --bg-card: #1e293b;
@@ -8,6 +10,7 @@
   --accent-cyan: #06b6d4;
   --accent-blue: #3b82f6;
   --accent-gradient: linear-gradient(135deg, #06b6d4, #3b82f6);
+  --logo-emblem: var(--accent-blue);
   --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
@@ -22,7 +25,7 @@ html[data-theme='light'] {
   --bg-primary: #f8fafc;
   --bg-secondary: #f1f5f9;
   --bg-card: #ffffff;
-  --bg-card-hover: #e2e8f0;
+  --bg-card-hover: #f1f5f9;
   --accent-cyan: #0891b2;
   --accent-blue: #2563eb;
   --accent-gradient: linear-gradient(135deg, #0891b2, #2563eb);
@@ -72,7 +75,7 @@ a:hover {
 
 .section {
   padding: 5rem 0;
-  scroll-margin-top: 71px;
+  scroll-margin-top: calc(var(--header-height) + 1px);
 }
 
 .section-title {

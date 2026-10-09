@@ -1,15 +1,64 @@
 ---
+import { Icon } from 'astro-icon/components';
+
+const techIcons: Record<string, string> = {
+  PHP: 'simple-icons:php',
+  Laravel: 'simple-icons:laravel',
+  JavaScript: 'simple-icons:javascript',
+  MySQL: 'simple-icons:mysql',
+  Astro: 'simple-icons:astro',
+  FastAPI: 'simple-icons:fastapi',
+  Python: 'simple-icons:python',
+  'Node.js': 'simple-icons:nodedotjs',
+  React: 'simple-icons:react',
+  'APIs REST': 'lucide:network',
+  Docker: 'simple-icons:docker',
+  Linux: 'simple-icons:linux',
+  Git: 'simple-icons:git',
+  SSH: 'lucide:key-round',
+  'Servidores VPS': 'lucide:server',
+  OpenCode: 'simple-icons:opencode',
+  Ollama: 'simple-icons:ollama',
+  'Seguridad IT': 'lucide:shield-check',
+  Automatización: 'lucide:zap'
+};
+
+const techLinks: Record<string, string> = {
+  PHP: 'https://es.wikipedia.org/wiki/PHP',
+  Laravel: 'https://es.wikipedia.org/wiki/Laravel',
+  JavaScript: 'https://es.wikipedia.org/wiki/JavaScript',
+  MySQL: 'https://es.wikipedia.org/wiki/MySQL',
+  Astro: 'https://es.wikipedia.org/wiki/Astro_(framework)',
+  FastAPI: 'https://en.wikipedia.org/wiki/FastAPI',
+  Python: 'https://es.wikipedia.org/wiki/Python',
+  'Node.js': 'https://es.wikipedia.org/wiki/Node.js',
+  React: 'https://es.wikipedia.org/wiki/React',
+  'APIs REST': 'https://es.wikipedia.org/wiki/Transferencia_de_estado_representacional',
+  Docker: 'https://es.wikipedia.org/wiki/Docker_(software)',
+  Linux: 'https://es.wikipedia.org/wiki/Linux',
+  Git: 'https://es.wikipedia.org/wiki/Git',
+  SSH: 'https://es.wikipedia.org/wiki/Secure_Shell',
+  'Servidores VPS': 'https://es.wikipedia.org/wiki/Servidor_virtual_privado',
+  OpenCode: 'https://en.wikipedia.org/wiki/OpenCode',
+  Ollama: 'https://en.wikipedia.org/wiki/Ollama',
+  'Seguridad IT': 'https://es.wikipedia.org/wiki/Seguridad_inform%C3%A1tica',
+  Automatización: 'https://es.wikipedia.org/wiki/Automatizaci%C3%B3n'
+};
+
 const categories = [
   {
     name: 'Desarrollo',
-    techs: ['PHP', 'Laravel', 'JavaScript', 'MySQL', 'Astro', 'APIs REST']
+    icon: 'lucide:code',
+    techs: ['PHP', 'Laravel', 'JavaScript', 'Node.js', 'Python', 'FastAPI', 'React', 'MySQL', 'Astro', 'APIs REST']
   },
   {
     name: 'Infraestructura',
+    icon: 'lucide:server',
     techs: ['Docker', 'Linux', 'Git', 'SSH', 'Servidores VPS']
   },
   {
     name: 'Herramientas',
+    icon: 'lucide:wrench',
     techs: ['OpenCode', 'Ollama', 'Seguridad IT', 'Automatización']
   }
 ];
@@ -22,10 +71,16 @@ const categories = [
     <div class="tech-categories">
       {categories.map(category => (
         <div class="tech-category">
-          <h3 class="category-name">{category.name}</h3>
+          <h3 class="category-name">
+            <Icon name={category.icon} class="category-icon" aria-hidden="true" />
+            {category.name}
+          </h3>
           <div class="tech-tags">
             {category.techs.map(tech => (
-              <span class="tech-tag">{tech}</span>
+              <a class="tech-tag" href={techLinks[tech]} target="_blank" rel="noopener noreferrer">
+                <Icon name={techIcons[tech]} class="tech-icon" aria-hidden="true" />
+                {tech}
+              </a>
             ))}
           </div>
         </div>
@@ -54,12 +109,24 @@ const categories = [
   }
 
   .category-name {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--accent-cyan);
     margin-bottom: 1.25rem;
     padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .category-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
   }
 
   .tech-tags {
@@ -69,6 +136,9 @@ const categories = [
   }
 
   .tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     padding: 0.5rem 1rem;
     background: rgba(6, 182, 212, 0.08);
     border: 1px solid rgba(6, 182, 212, 0.15);
@@ -76,6 +146,13 @@ const categories = [
     font-size: 0.875rem;
     color: var(--text-secondary);
     transition: all 0.3s ease;
+  }
+
+  .tech-tag :global(.tech-icon) {
+    width: 21px;
+    height: 21px;
+    flex-shrink: 0;
+    color: var(--accent-cyan);
   }
 
   .tech-tag:hover {
