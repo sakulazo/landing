@@ -41,10 +41,12 @@ const services = [
     <div class="services-grid">
       {services.map(service => (
         <div class="service-card">
-          <div class="service-icon">
-            <Icon name={service.icon} aria-hidden="true" />
+          <div class="service-head">
+            <div class="service-icon">
+              <Icon name={service.icon} aria-hidden="true" />
+            </div>
+            <h3 class="service-title">{service.title}</h3>
           </div>
-          <h3 class="service-title">{service.title}</h3>
           <p class="service-description">{service.description}</p>
         </div>
       ))}
@@ -110,6 +112,13 @@ const services = [
     opacity: 1;
   }
 
+  .service-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
   .service-icon {
     width: 56px;
     height: 56px;
@@ -119,7 +128,7 @@ const services = [
     background: rgba(6, 182, 212, 0.1);
     border: 1px solid rgba(6, 182, 212, 0.2);
     border-radius: 12px;
-    margin-bottom: 1.25rem;
+    flex-shrink: 0;
     color: var(--accent-cyan);
     transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   }
@@ -143,7 +152,6 @@ const services = [
   .service-title {
     font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
     color: var(--text-primary);
     transition: color 0.3s ease;
   }

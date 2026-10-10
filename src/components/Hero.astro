@@ -7,11 +7,11 @@ import { Icon } from 'astro-icon/components';
   <div class="container hero-content">
     <div class="hero-badge">Innovación Tecnológica</div>
     <h1>
-      Transformando&nbsp;<span class="hero-title-line-2">
-        ideas en&nbsp;<span class="rotating-text" aria-live="polite">
-          <span class="rotating-word gradient-text active">soluciones&nbsp;<br class="rotate-br-mobile">digitales</span>
-          <span class="rotating-word gradient-text">aplicaciones&nbsp;<br class="rotate-br-mobile">reales</span>
-          <span class="rotating-word gradient-text">automatización&nbsp;<br class="rotate-br-mobile">de procesos</span>
+      Transformando <span class="hero-title-line-2">
+        ideas&nbsp;en&nbsp;<span class="rotating-text" aria-live="polite">
+          <span class="rotating-word gradient-text active">soluciones digitales</span>
+          <span class="rotating-word gradient-text">aplicaciones reales</span>
+          <span class="rotating-word gradient-text">automatización de procesos</span>
           <span class="rotating-caret" aria-hidden="true"></span>
         </span>
       </span>
@@ -85,6 +85,7 @@ import { Icon } from 'astro-icon/components';
     line-height: 1.15;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
+    text-wrap: balance;
   }
 
   .gradient-text {
@@ -116,10 +117,6 @@ import { Icon } from 'astro-icon/components';
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
-  }
-
-  .rotate-br-mobile {
-    display: none;
   }
 
   .rotating-caret {
@@ -218,10 +215,6 @@ import { Icon } from 'astro-icon/components';
       font-size: 2.25rem;
     }
 
-    .hero-title-line-2 {
-      display: block;
-    }
-
     .rotating-text {
       display: grid;
       min-height: 2.3em;
@@ -229,10 +222,6 @@ import { Icon } from 'astro-icon/components';
 
     .rotating-word {
       white-space: normal;
-    }
-
-    .rotate-br-mobile {
-      display: inline;
     }
 
     .rotating-caret {
