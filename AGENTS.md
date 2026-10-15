@@ -19,7 +19,7 @@ script de typecheck ni CI.
 
 - `make deploy MSG="..."` es el único comando de publicación. Ejecuta:
   build → `git add -A` + commit → push a `origin main` → subida de `dist/` al VPS
-  (sakulito@185.214.134.40:42932, necesita `~/.ssh/id_ed25519`) → verificación HTTP 200.
+  (alias SSH `vps` de `~/.ssh/config`) → verificación HTTP 200.
 - **Commitea todos los archivos sucios del árbol de trabajo.** Revisa `git status` antes;
   nunca lo ejecutes solo para "comprobar el build" — usa `npm run build` para eso.
 - Más granular: `make build`, `make push MSG="..."`, `make verify`, `make help`.

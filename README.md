@@ -14,7 +14,7 @@ npm run preview     # previsualizar la build
 ## Despliegue
 
 El sitio se sirve desde **`sakulazo.com`** mediante **Caddy** corriendo en Docker en el VPS
-(`185.214.134.40`). Caddy sirve la build estática desde `/srv/landing/` dentro del contenedor.
+(acceso por el alias SSH `vps`). Caddy sirve la build estática desde `/srv/landing/` dentro del contenedor.
 
 ### Flujo
 
@@ -51,10 +51,8 @@ Esto ejecuta, en orden:
 
 | Dato | Valor |
 |---|---|
-| Host | `185.214.134.40` |
+| Alias SSH | `vps` (`~/.ssh/config`: host, puerto, usuario y clave) |
 | Usuario de despliegue | `sakulito` (propietario de `/srv/landing`) |
-| Puerto SSH | `42932` |
-| Clave | `~/.ssh/id_ed25519` (también autentica en GitHub) |
 
 > El usuario `vps-manager` no tiene permisos de escritura sobre `/srv/landing`;
 > por eso el despliegue se hace como `sakulito`.
