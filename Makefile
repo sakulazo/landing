@@ -14,9 +14,9 @@ REMOTE_OWNER := sakulito
 BUILD_CMD    := npm run build
 
 # ── Infraestructura SSH (común) ───────────────────────────────────────
-SSH_HOST   := sakulito@185.214.134.40
-SSH_PORT   := 42932
-SSH_KEY    := $(HOME)/.ssh/id_ed25519
+# Conexión por el alias de ~/.ssh/config (Host vps), no por IP cruda: el alias
+# es la fuente de verdad de user/port/key. Override: make ... SSH_ALIAS=vps-manager
+SSH_ALIAS  ?= vps
 GIT_REMOTE := origin
 GIT_BRANCH := main
 
@@ -36,8 +36,8 @@ push: ## Commit + push a GitHub (requiere MSG="descripción")
 
 deploy: build push ## Build + push + subida al VPS (limpia el destino completo)
 	@case "$(REMOTE_DIR)" in /srv/*) ;; *) echo "ERROR: REMOTE_DIR inseguro: $(REMOTE_DIR)"; exit 1;; esac
-	@echo ">> $(SITE_NAME): subiendo build a $(SSH_HOST):$(REMOTE_DIR)"
-	@tar -C dist -cf - . | ssh -i $(SSH_KEY) -p $(SSH_PORT) $(SSH_HOST) \
+	@echo ">> $(SITE_NAME): subiendo build a $(SSH_ALIAS):$(REMOTE_DIR)"
+	@tar -C dist -cf - . | ssh $(SSH_ALIAS) \
 	  'sudo find $(REMOTE_DIR) -mindepth 1 -delete && sudo mkdir -p $(REMOTE_DIR) && sudo tar -C $(REMOTE_DIR) -xf - \
 	   && sudo chown -R $(REMOTE_OWNER):$(REMOTE_OWNER) $(REMOTE_DIR) \
 	   && sudo find $(REMOTE_DIR) -type f -exec chmod 644 {} + \
@@ -45,4 +45,4 @@ deploy: build push ## Build + push + subida al VPS (limpia el destino completo)
 	@$(MAKE) verify
 
 verify: ## Comprueba que el sitio responde 200
-	@ssh -i $(SSH_KEY) -p $(SSH_PORT) $(SSH_HOST) 'curl -s -o /dev/null -w "$(SITE_NAME): HTTP %{http_code}\n" $(SITE_URL)'
+	@ssh $(SSH_ALIAS) 'curl -s -o /dev/null -w "$(SITE_NAME): HTTP %{http_code}\n" $(SITE_URL)'
